@@ -256,8 +256,8 @@ Have the absolute best birthday ever, sissy! Love youuu<3</div>
     </div>
 
     <script>
-        // TARGET TIME: Set to 5 seconds from now for testing
-        const targetDate = new Date().getTime() + (5 * 1000); 
+        // TARGET TIME: August 15, 2026, 00:00:00 Egypt Time (EEST, UTC+3)
+        const targetDate = new Date('2026-08-15T00:00:00+03:00').getTime();
 
         const lockScreen = document.getElementById('lock-screen');
         const timerText = document.getElementById('timer-text');
@@ -268,10 +268,13 @@ Have the absolute best birthday ever, sissy! Love youuu<3</div>
             const now = new Date().getTime();
             const diff = targetDate - now;
             if (diff <= 0) { unlockWebsite(); return; }
-            const h = Math.floor((diff / (1000 * 60 * 60)));
+            
+            const totalHours = Math.floor(diff / (1000 * 60 * 60));
             const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             const s = Math.floor((diff % (1000 * 60)) / 1000);
-            timerText.innerHTML = (h < 10 ? "0" + h : h) + ":" + (m < 10 ? "0" + m : m) + ":" + (s < 10 ? "0" + s : s);
+            
+            timerText.innerHTML = (totalHours < 10 ? "0" + totalHours : totalHours) + ":" + (m < 10 ? "0" + m : m) + ":" + (s < 10 ? "0" + s : s);
+            
             requestAnimationFrame(updateCountdown);
         }
 
@@ -347,7 +350,7 @@ Have the absolute best birthday ever, sissy! Love youuu<3</div>
 
                     yesBtn.style.display = 'none';
 
-                    // Revert to natural random organic scattering across the viewport
+                    // Natural random organic scattering across the viewport
                     const totalButtons = 60;
                     for (let i = 0; i < totalButtons; i++) {
                         const swarmBtn = document.createElement('button');
